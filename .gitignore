@@ -398,3 +398,7 @@ FodyWeavers.xsd
 *.sln.iml
 *.dll
 /redecompile
+
+# Local reference exports copied from the user's installed Stardew Valley.
+# Keep these available for local analysis, but do not commit full official map data.
+_local_exports/
