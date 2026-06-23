@@ -402,3 +402,8 @@ FodyWeavers.xsd
 # Local reference exports copied from the user's installed Stardew Valley.
 # Keep these available for local analysis, but do not commit full official map data.
 _local_exports/
+
+# Local mirror/link to the user's installed Stardew Valley Content.
+# This is the raw input source for reference analysis and must not be committed.
+Content/
+Content (unpacked)/
