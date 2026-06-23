@@ -1936,18 +1936,18 @@ public class Game1 : InstanceGame
 	{
 		return mode switch
 		{
-			4 => $"logoScreenGameMode ({mode})", 
-			0 => $"titleScreenGameMode ({mode})", 
-			1 => $"loadScreenGameMode ({mode})", 
-			2 => $"newGameMode ({mode})", 
-			3 => $"playingGameMode ({mode})", 
-			6 => $"loadingMode ({mode})", 
-			7 => $"saveMode ({mode})", 
-			8 => $"saveCompleteMode ({mode})", 
-			9 => $"selectGameScreen ({mode})", 
-			10 => $"creditsMode ({mode})", 
-			11 => $"errorLogMode ({mode})", 
-			_ => $"unknown ({mode})", 
+			4 => $"logoScreenGameMode ({mode})",
+			0 => $"titleScreenGameMode ({mode})",
+			1 => $"loadScreenGameMode ({mode})",
+			2 => $"newGameMode ({mode})",
+			3 => $"playingGameMode ({mode})",
+			6 => $"loadingMode ({mode})",
+			7 => $"saveMode ({mode})",
+			8 => $"saveCompleteMode ({mode})",
+			9 => $"selectGameScreen ({mode})",
+			10 => $"creditsMode ({mode})",
+			11 => $"errorLogMode ({mode})",
+			_ => $"unknown ({mode})",
 		};
 	}
 
@@ -4094,9 +4094,9 @@ public class Game1 : InstanceGame
 		}
 		return season switch
 		{
-			Season.Fall => 1700, 
-			Season.Winter => 1500, 
-			_ => 1800, 
+			Season.Fall => 1700,
+			Season.Winter => 1500,
+			_ => 1800,
 		};
 	}
 
@@ -4159,11 +4159,11 @@ public class Game1 : InstanceGame
 			{
 				if (ignoreDelay)
 				{
-					PlayAction();
+					PlayRain();
 				}
 				else
 				{
-					morningSongPlayAction = DelayedAction.functionAfterDelay(PlayAction, 500);
+					morningSongPlayAction = DelayedAction.functionAfterDelay(PlayRain, 500);
 				}
 				return;
 			}
@@ -4174,32 +4174,34 @@ public class Game1 : InstanceGame
 				{
 					if (ignoreDelay)
 					{
-						PlayAction();
+						PlayLocationSong();
 					}
 					else
 					{
-						morningSongPlayAction = DelayedAction.functionAfterDelay(PlayAction, 500);
+						morningSongPlayAction = DelayedAction.functionAfterDelay(PlayLocationSong, 500);
 					}
 				}
 			}
 			else if (ignoreDelay)
 			{
-				PlayAction();
+				PlayDefault();
 			}
 			else
 			{
-				morningSongPlayAction = DelayedAction.functionAfterDelay(PlayAction, 500);
+				morningSongPlayAction = DelayedAction.functionAfterDelay(PlayDefault, 500);
 			}
 		}
 		else if (getMusicTrackName() == "silence")
 		{
 			changeMusicTrack("none", track_interruptable: true);
 		}
-		static void PlayAction()
+		static void PlayDefault()
 		{
-			changeMusicTrack("rain", track_interruptable: true);
+			changeMusicTrack(currentLocation.GetMorningSong(), track_interruptable: true);
+			IsPlayingBackgroundMusic = true;
+			IsPlayingMorningSong = true;
 		}
-		void PlayAction()
+		void PlayLocationSong()
 		{
 			if (currentLocation == null)
 			{
@@ -4211,11 +4213,9 @@ public class Game1 : InstanceGame
 				IsPlayingBackgroundMusic = true;
 			}
 		}
-		static void PlayAction()
+		static void PlayRain()
 		{
-			changeMusicTrack(currentLocation.GetMorningSong(), track_interruptable: true);
-			IsPlayingBackgroundMusic = true;
-			IsPlayingMorningSong = true;
+			changeMusicTrack("rain", track_interruptable: true);
 		}
 	}
 
@@ -5505,10 +5505,10 @@ public class Game1 : InstanceGame
 							value2 = array[0];
 							value2 = value2 switch
 							{
-								"Forest" => IsWinter ? content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2634") : content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2635"), 
-								"Town" => content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2637"), 
-								"Beach" => content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2639"), 
-								_ => TokenParser.ParseText(GameLocation.GetData(value2)?.DisplayName) ?? value2, 
+								"Forest" => IsWinter ? content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2634") : content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2635"),
+								"Town" => content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2637"),
+								"Beach" => content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2639"),
+								_ => TokenParser.ParseText(GameLocation.GetData(value2)?.DisplayName) ?? value2,
 							};
 						}
 						showGlobalMessage(content.LoadString("Strings\\StringsFromCSFiles:Game1.cs.2640", dictionary["name"]) + value2);
@@ -5910,7 +5910,7 @@ public class Game1 : InstanceGame
 		}
 		if (newDay)
 		{
-			newDayAfterFade(After);
+			newDayAfterFade(AfterNewDay);
 			return true;
 		}
 		if (eventOver)
@@ -5918,7 +5918,7 @@ public class Game1 : InstanceGame
 			eventFinished();
 			if (dayOfMonth == 0)
 			{
-				newDayAfterFade(After);
+				newDayAfterFade(AfterEventOver);
 			}
 			return true;
 		}
@@ -5934,7 +5934,13 @@ public class Game1 : InstanceGame
 			}
 		}
 		return should_halt;
-		static void After()
+		static void AfterEventOver()
+		{
+			currentLocation.resetForPlayerEntry();
+			nonWarpFade = false;
+			fadeIn = false;
+		}
+		static void AfterNewDay()
 		{
 			if (eventOver)
 			{
@@ -5947,12 +5953,6 @@ public class Game1 : InstanceGame
 					});
 				}
 			}
-			nonWarpFade = false;
-			fadeIn = false;
-		}
-		static void After()
-		{
-			currentLocation.resetForPlayerEntry();
 			nonWarpFade = false;
 			fadeIn = false;
 		}
@@ -6865,10 +6865,10 @@ public class Game1 : InstanceGame
 		int debrisToMake = random.Next(16, 64);
 		int baseIndex = season switch
 		{
-			Season.Fall => 2, 
-			Season.Winter => 3, 
-			Season.Summer => 1, 
-			_ => 0, 
+			Season.Fall => 2,
+			Season.Winter => 3,
+			Season.Summer => 1,
+			_ => 0,
 		};
 		isDebrisWeather = true;
 		debrisWeatherSeason = season;
@@ -9945,14 +9945,14 @@ public class Game1 : InstanceGame
 	{
 		return (dayOfSeason % 7) switch
 		{
-			0 => "Sun", 
-			1 => "Mon", 
-			2 => "Tue", 
-			3 => "Wed", 
-			4 => "Thu", 
-			5 => "Fri", 
-			6 => "Sat", 
-			_ => "", 
+			0 => "Sun",
+			1 => "Mon",
+			2 => "Tue",
+			3 => "Wed",
+			4 => "Thu",
+			5 => "Fri",
+			6 => "Sat",
+			_ => "",
 		};
 	}
 
@@ -10310,10 +10310,10 @@ public class Game1 : InstanceGame
 			{
 				Vector2 offset = random.Next(4) switch
 				{
-					0 => new Vector2(-64f, 0f), 
-					1 => new Vector2(64f, 0f), 
-					2 => new Vector2(0f, 64f), 
-					_ => new Vector2(0f, -64f), 
+					0 => new Vector2(-64f, 0f),
+					1 => new Vector2(64f, 0f),
+					2 => new Vector2(0f, 64f),
+					_ => new Vector2(0f, -64f),
 				};
 				Item debris = ItemRegistry.Create("(O)" + debrisType);
 				location.debris.Add(new Debris(debris, debrisOrigin, debrisOrigin + offset));
@@ -10941,9 +10941,9 @@ public class Game1 : InstanceGame
 						return false;
 					}
 				}
-				if (!eventUp && player.ActiveObject is Furniture furniture)
+				if (!eventUp && player.ActiveObject is Furniture furniture2)
 				{
-					furniture.rotate();
+					furniture2.rotate();
 					playSound("dwoop");
 					oldKBState = currentKBState;
 					oldMouseState = input.GetMouseState();
@@ -10963,9 +10963,9 @@ public class Game1 : InstanceGame
 						return false;
 					}
 				}
-				if (!eventUp && player.ActiveObject is Furniture furniture)
+				if (!eventUp && player.ActiveObject is Furniture furniture3)
 				{
-					furniture.rotate();
+					furniture3.rotate();
 					playSound("dwoop");
 					oldKBState = currentKBState;
 					oldMouseState = input.GetMouseState();
@@ -14782,9 +14782,9 @@ public class Game1 : InstanceGame
 			toolYOffset += f.yJumpOffset;
 			float layerDepth = FarmerRenderer.GetLayerDepth(base_layer_depth, f.FacingDirection switch
 			{
-				0 => FarmerRenderer.FarmerSpriteLayers.ToolUp, 
-				2 => FarmerRenderer.FarmerSpriteLayers.ToolDown, 
-				_ => FarmerRenderer.FarmerSpriteLayers.TOOL_IN_USE_SIDE, 
+				0 => FarmerRenderer.FarmerSpriteLayers.ToolUp,
+				2 => FarmerRenderer.FarmerSpriteLayers.ToolDown,
+				_ => FarmerRenderer.FarmerSpriteLayers.TOOL_IN_USE_SIDE,
 			});
 			Color color;
 			switch (f.FacingDirection)
@@ -14802,7 +14802,7 @@ public class Game1 : InstanceGame
 					tileLocation.Y++;
 				}
 				currentTool = f.CurrentTool;
-				if (!(currentTool is FishingRod rod))
+				if (!(currentTool is FishingRod fishingRod3))
 				{
 					if (currentTool is WateringCan)
 					{
@@ -14858,11 +14858,11 @@ public class Game1 : InstanceGame
 					}
 					return;
 				}
-				color = rod.getColor();
+				color = fishingRod3.getColor();
 				switch (farmerSprite.currentAnimationIndex)
 				{
 				case 0:
-					if (rod.isReeling || rod.isFishing || rod.doneWithAnimation || !rod.hasDoneFucntionYet || rod.pullingOutOfWater)
+					if (fishingRod3.isReeling || fishingRod3.isFishing || fishingRod3.doneWithAnimation || !fishingRod3.hasDoneFucntionYet || fishingRod3.pullingOutOfWater)
 					{
 						spriteBatch.Draw(spritesheet, new Vector2(fPosition.X - 64f + (float)toolXOffset, fPosition.Y - 160f + (float)toolYOffset), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.None, layerDepth);
 					}
@@ -14877,7 +14877,7 @@ public class Game1 : InstanceGame
 					spriteBatch.Draw(spritesheet, new Vector2(fPosition.X - 96f + 24f + (float)toolXOffset, fPosition.Y - 128f - 32f + (float)toolYOffset), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.None, layerDepth);
 					break;
 				case 4:
-					if (rod.isFishing || rod.doneWithAnimation)
+					if (fishingRod3.isFishing || fishingRod3.doneWithAnimation)
 					{
 						spriteBatch.Draw(spritesheet, new Vector2(fPosition.X - 64f + (float)toolXOffset, fPosition.Y - 160f + (float)toolYOffset), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.None, layerDepth);
 					}
@@ -14904,7 +14904,7 @@ public class Game1 : InstanceGame
 					tileLocation.Y++;
 				}
 				currentTool = f.CurrentTool;
-				if (!(currentTool is FishingRod rod))
+				if (!(currentTool is FishingRod fishingRod2))
 				{
 					if (currentTool is WateringCan)
 					{
@@ -14956,11 +14956,11 @@ public class Game1 : InstanceGame
 					}
 					return;
 				}
-				color = rod.getColor();
+				color = fishingRod2.getColor();
 				switch (farmerSprite.currentAnimationIndex)
 				{
 				case 0:
-					if (rod.isReeling || rod.isFishing || rod.doneWithAnimation || !rod.hasDoneFucntionYet || rod.pullingOutOfWater)
+					if (fishingRod2.isReeling || fishingRod2.isFishing || fishingRod2.doneWithAnimation || !fishingRod2.hasDoneFucntionYet || fishingRod2.pullingOutOfWater)
 					{
 						spriteBatch.Draw(spritesheet, Utility.snapToInt(new Vector2(fPosition.X - 64f + (float)toolXOffset, fPosition.Y - 160f + (float)toolYOffset)), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.FlipHorizontally, layerDepth);
 					}
@@ -14975,7 +14975,7 @@ public class Game1 : InstanceGame
 					spriteBatch.Draw(spritesheet, Utility.snapToInt(new Vector2(fPosition.X - 96f + 24f + (float)toolXOffset, fPosition.Y - 128f - 32f + (float)toolYOffset)), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.FlipHorizontally, layerDepth);
 					break;
 				case 4:
-					if (rod.isFishing || rod.doneWithAnimation)
+					if (fishingRod2.isFishing || fishingRod2.doneWithAnimation)
 					{
 						spriteBatch.Draw(spritesheet, Utility.snapToInt(new Vector2(fPosition.X - 64f + (float)toolXOffset, fPosition.Y - 160f + (float)toolYOffset)), sourceRectangleForTool, color, 0f, Vector2.Zero, 4f, SpriteEffects.FlipHorizontally, layerDepth);
 					}
@@ -15525,14 +15525,14 @@ public class Game1 : InstanceGame
 	{
 		return whichFarm switch
 		{
-			0 => "Standard", 
-			1 => "Riverland", 
-			2 => "Forest", 
-			3 => "Hilltop", 
-			4 => "Wilderness", 
-			5 => "FourCorners", 
-			6 => "Beach", 
-			_ => GetFarmTypeID(), 
+			0 => "Standard",
+			1 => "Riverland",
+			2 => "Forest",
+			3 => "Hilltop",
+			4 => "Wilderness",
+			5 => "FourCorners",
+			6 => "Beach",
+			_ => GetFarmTypeID(),
 		};
 	}
 

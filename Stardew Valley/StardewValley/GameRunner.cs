@@ -57,7 +57,6 @@ public class GameRunner : Game
 		SubscribeClientSizeChange();
 		base.Exiting += delegate(object? sender, EventArgs args)
 		{
-			object sender = sender;
 			ExecuteForInstances(delegate(Game1 instance)
 			{
 				instance.exitEvent(sender, args);

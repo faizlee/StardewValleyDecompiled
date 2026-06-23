@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <!-- Set this to your local Stardew Valley install directory. Do not commit Directory.Build.local.props. -->
+    <StardewInstallDir>E:\soft\funSoft\steam\steamapps\common\Stardew Valley\</StardewInstallDir>
+  </PropertyGroup>
+</Project>

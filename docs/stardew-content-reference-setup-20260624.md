@@ -8,6 +8,8 @@
 
 Create a safe local reference layout so FarmOld can inspect the user's installed Stardew Valley resources without mixing raw official content into the existing `res/` folder or committing those resources to Git.
 
+Runtime DLL references and decompiled-source build repairs are tracked separately in `docs/stardew-runtime-reference-setup-20260624.md`.
+
 ## Confirmed Inputs
 
 - Stardew install root: `E:\soft\funSoft\steam\steamapps\common\Stardew Valley`

@@ -69,9 +69,9 @@ public class InteriorDoor : NetField<bool, InteriorDoor>
 		{
 			return;
 		}
-		if (Tile.Properties.TryGetValue("Action", out var doorAction) && doorAction.Contains("Door"))
+		if (Tile.Properties.TryGetValue("Action", out var doorAction) && doorAction.ToString().Contains("Door"))
 		{
-			string[] actionParts = ArgUtility.SplitBySpace(doorAction, 2);
+			string[] actionParts = ArgUtility.SplitBySpace(doorAction.ToString(), 2);
 			if (actionParts.Length > 1)
 			{
 				Tile tile = backLayer.Tiles[doorLocation];

@@ -128,22 +128,22 @@ public class TrainCar : INetObject<NetFields>
 				string debrisId = null;
 				switch (resourceType)
 				{
-				case 0L:
+				case 0:
 					debrisId = "(O)382";
 					break;
-				case 1L:
+				case 1:
 					debrisId = ((color.R > color.G) ? "(O)378" : ((color.G > color.B) ? "(O)380" : ((color.B > color.R) ? "(O)384" : "(O)378")));
 					break;
-				case 7L:
+				case 7:
 					debrisId = (location.IsWinterHere() ? "(O)536" : ((Game1.stats.DaysPlayed > 120 && color.R > color.G) ? "(O)537" : "(O)535"));
 					break;
-				case 2L:
+				case 2:
 					debrisId = ((Game1.random.NextDouble() < 0.05) ? "(O)709" : "(O)388");
 					break;
-				case 6L:
+				case 6:
 					debrisId = "(O)390";
 					break;
-				case 9L:
+				case 9:
 					if (Utility.tryRollMysteryBox(0.02))
 					{
 						debrisId = "(O)MysteryBox";

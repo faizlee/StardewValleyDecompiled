@@ -134,7 +134,7 @@ public class ResourceClump : TerrainFeature
 		int radialDebris = 12;
 		switch ((long)parentSheetIndex.Value)
 		{
-		case 600L:
+		case 600:
 			if (t is Axe && (int)t.upgradeLevel < 1)
 			{
 				location.playSound("axe", tileLocation);
@@ -148,7 +148,7 @@ public class ResourceClump : TerrainFeature
 			}
 			location.playSound("axchop", tileLocation);
 			break;
-		case 602L:
+		case 602:
 			if (t is Axe && (int)t.upgradeLevel < 2)
 			{
 				location.playSound("axe", tileLocation);
@@ -162,8 +162,8 @@ public class ResourceClump : TerrainFeature
 			}
 			location.playSound("axchop", tileLocation);
 			break;
-		case 148L:
-		case 622L:
+		case 148:
+		case 622:
 			if (t is Pickaxe && (int)t.upgradeLevel < 3)
 			{
 				location.playSound("clubhit", tileLocation);
@@ -179,7 +179,7 @@ public class ResourceClump : TerrainFeature
 			location.playSound("hammer", tileLocation);
 			radialDebris = 14;
 			break;
-		case 672L:
+		case 672:
 			if (t is Pickaxe && (int)t.upgradeLevel < 2)
 			{
 				location.playSound("clubhit", tileLocation);
@@ -195,10 +195,10 @@ public class ResourceClump : TerrainFeature
 			location.playSound("hammer", tileLocation);
 			radialDebris = 14;
 			break;
-		case 752L:
-		case 754L:
-		case 756L:
-		case 758L:
+		case 752:
+		case 754:
+		case 756:
+		case 758:
 			if (!(t is Pickaxe))
 			{
 				return false;
@@ -208,8 +208,8 @@ public class ResourceClump : TerrainFeature
 			shakeTimer = 500f;
 			base.NeedsUpdate = true;
 			break;
-		case 44L:
-		case 46L:
+		case 44:
+		case 46:
 			location.playSound((health.Value - power <= 0f) ? "cut" : "weed_cut", tileLocation);
 			shakeTimer = 500f;
 			radialDebris = 36;

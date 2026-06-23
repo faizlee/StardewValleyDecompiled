@@ -310,8 +310,8 @@ public class HouseRenovation : ISalable, IHaveItemTypeId
 							valid = false;
 							break;
 						}
-						renovation.onRenovation = (Action<HouseRenovation, int>)Delegate.Combine(renovation.onRenovation, new Action<HouseRenovation, int>(OnRenovation));
-						void OnRenovation(HouseRenovation selectedRenovation, int index)
+						renovation.onRenovation = (Action<HouseRenovation, int>)Delegate.Combine(renovation.onRenovation, new Action<HouseRenovation, int>(OnValueRenovation));
+						void OnValueRenovation(HouseRenovation selectedRenovation, int index)
 						{
 							if (action_data.Value == "selected")
 							{
@@ -332,9 +332,9 @@ public class HouseRenovation : ISalable, IHaveItemTypeId
 				}
 				else if (action_data.Type == "Mail")
 				{
-					renovation.onRenovation = (Action<HouseRenovation, int>)Delegate.Combine(renovation.onRenovation, new Action<HouseRenovation, int>(OnRenovation));
+					renovation.onRenovation = (Action<HouseRenovation, int>)Delegate.Combine(renovation.onRenovation, new Action<HouseRenovation, int>(OnMailRenovation));
 				}
-				void OnRenovation(HouseRenovation selectedRenovation, int index)
+				void OnMailRenovation(HouseRenovation selectedRenovation, int index)
 				{
 					if (action_data.Value == "0")
 					{

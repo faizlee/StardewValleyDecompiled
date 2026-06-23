@@ -69,7 +69,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 		timer = 0f;
 		switch (behavior)
 		{
-		case 5L:
+		case 5:
 			soundName = "windstorm";
 			message = Game1.content.LoadString("Strings\\1_6_Strings:windstorm");
 			timeUntilText = 14000f;
@@ -78,7 +78,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 				Game1.player.mailReceived.Add("raccoonTreeFallen");
 			}
 			break;
-		case 0L:
+		case 0:
 		{
 			soundName = "UFO";
 			message = Game1.content.LoadString("Strings\\Events:SoundInTheNight_UFO");
@@ -97,7 +97,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 			}
 			break;
 		}
-		case 1L:
+		case 1:
 		{
 			soundName = "Meteorite";
 			message = Game1.content.LoadString("Strings\\Events:SoundInTheNight_Meteorite");
@@ -115,7 +115,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 			}
 			break;
 		}
-		case 2L:
+		case 2:
 			soundName = "dogs";
 			if (r.NextBool())
 			{
@@ -134,7 +134,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 				return true;
 			}
 			return false;
-		case 3L:
+		case 3:
 		{
 			soundName = "owl";
 			int attempts;
@@ -152,7 +152,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 			}
 			break;
 		}
-		case 4L:
+		case 4:
 			soundName = "thunder_small";
 			message = Game1.content.LoadString("Strings\\Events:SoundInTheNight_Earthquake");
 			break;
@@ -234,21 +234,21 @@ public class SoundInTheNightEvent : BaseFarmEvent
 		Farm f = Game1.getFarm();
 		switch (behavior)
 		{
-		case 0L:
+		case 0:
 		{
 			Object o = ItemRegistry.Create<Object>("(BC)96");
 			o.MinutesUntilReady = 24000 - Game1.timeOfDay;
 			f.objects.Add(targetLocation, o);
 			break;
 		}
-		case 1L:
+		case 1:
 			f.terrainFeatures.Remove(targetLocation);
 			f.terrainFeatures.Remove(targetLocation + new Vector2(1f, 0f));
 			f.terrainFeatures.Remove(targetLocation + new Vector2(1f, 1f));
 			f.terrainFeatures.Remove(targetLocation + new Vector2(0f, 1f));
 			f.resourceClumps.Add(new ResourceClump(622, 2, 2, targetLocation));
 			break;
-		case 2L:
+		case 2:
 		{
 			AnimalHouse indoors = (AnimalHouse)targetBuilding.GetIndoors();
 			long idOfRemove = 0L;
@@ -274,7 +274,7 @@ public class SoundInTheNightEvent : BaseFarmEvent
 				break;
 			}
 		}
-		case 3L:
+		case 3:
 			f.objects.Add(targetLocation, ItemRegistry.Create<Object>("(BC)95"));
 			break;
 		}

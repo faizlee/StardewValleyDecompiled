@@ -1176,14 +1176,14 @@ public class Tree : TerrainFeature
 				{
 					return false;
 				}
-				damage = t.upgradeLevel switch
+				damage = ((int)t.upgradeLevel) switch
 				{
-					0L => 1f, 
-					1L => 1.25f, 
-					2L => 1.67f, 
-					3L => 2.5f, 
-					4L => 5f, 
-					_ => (int)t.upgradeLevel + 1, 
+					0 => 1f,
+					1 => 1.25f,
+					2 => 1.67f,
+					3 => 2.5f,
+					4 => 5f,
+					_ => (int)t.upgradeLevel + 1,
 				};
 			}
 			if (t is Axe && t.hasEnchantmentOfType<ShavingEnchantment>() && Game1.random.NextDouble() <= (double)(damage / 5f))
@@ -1216,14 +1216,14 @@ public class Tree : TerrainFeature
 			}
 			shake(tileLocation, doEvenIfStillShaking: true);
 			float damage = 1f;
-			damage = ((explosion > 0) ? ((float)explosion) : (t.upgradeLevel switch
+			damage = ((explosion > 0) ? ((float)explosion) : (((int)t.upgradeLevel) switch
 			{
-				0L => 2f, 
-				1L => 2.5f, 
-				2L => 3.34f, 
-				3L => 5f, 
-				4L => 10f, 
-				_ => 10 + ((int)t.upgradeLevel - 4), 
+				0 => 2f,
+				1 => 2.5f,
+				2 => 3.34f,
+				3 => 5f,
+				4 => 10f,
+				_ => 10 + ((int)t.upgradeLevel - 4),
 			}));
 			health.Value -= damage;
 			if (health.Value <= 0f)
@@ -1612,12 +1612,12 @@ public class Tree : TerrainFeature
 		layerDepth += positionOnScreen.X / 100000f;
 		if ((int)growthStage < 5)
 		{
-			Microsoft.Xna.Framework.Rectangle sourceRect = growthStage switch
+			Microsoft.Xna.Framework.Rectangle sourceRect = ((int)growthStage) switch
 			{
-				0L => new Microsoft.Xna.Framework.Rectangle(32, 128, 16, 16), 
-				1L => new Microsoft.Xna.Framework.Rectangle(0, 128, 16, 16), 
-				2L => new Microsoft.Xna.Framework.Rectangle(16, 128, 16, 16), 
-				_ => new Microsoft.Xna.Framework.Rectangle(0, 96, 16, 32), 
+				0 => new Microsoft.Xna.Framework.Rectangle(32, 128, 16, 16),
+				1 => new Microsoft.Xna.Framework.Rectangle(0, 128, 16, 16),
+				2 => new Microsoft.Xna.Framework.Rectangle(16, 128, 16, 16),
+				_ => new Microsoft.Xna.Framework.Rectangle(0, 96, 16, 32),
 			};
 			spriteBatch.Draw(texture.Value, positionOnScreen - new Vector2(0f, (float)sourceRect.Height * scale), sourceRect, Color.White, 0f, Vector2.Zero, scale, flipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None, layerDepth + (positionOnScreen.Y + (float)sourceRect.Height * scale) / 20000f);
 			return;
@@ -1648,12 +1648,12 @@ public class Tree : TerrainFeature
 		}
 		if ((int)growthStage < 5)
 		{
-			Microsoft.Xna.Framework.Rectangle sourceRect = growthStage switch
+			Microsoft.Xna.Framework.Rectangle sourceRect = ((int)growthStage) switch
 			{
-				0L => new Microsoft.Xna.Framework.Rectangle(32, 128, 16, 16), 
-				1L => new Microsoft.Xna.Framework.Rectangle(0, 128, 16, 16), 
-				2L => new Microsoft.Xna.Framework.Rectangle(16, 128, 16, 16), 
-				_ => new Microsoft.Xna.Framework.Rectangle(0, 96, 16, 32), 
+				0 => new Microsoft.Xna.Framework.Rectangle(32, 128, 16, 16),
+				1 => new Microsoft.Xna.Framework.Rectangle(0, 128, 16, 16),
+				2 => new Microsoft.Xna.Framework.Rectangle(16, 128, 16, 16),
+				_ => new Microsoft.Xna.Framework.Rectangle(0, 96, 16, 32),
 			};
 			spriteBatch.Draw(texture.Value, Game1.GlobalToLocal(Game1.viewport, new Vector2(tileLocation.X * 64f + 32f, tileLocation.Y * 64f - (float)(sourceRect.Height * 4 - 64) + (float)(((int)growthStage >= 3) ? 128 : 64))), sourceRect, fertilized ? Color.HotPink : Color.White, shakeRotation, new Vector2(8f, ((int)growthStage >= 3) ? 32 : 16), 4f, flipped ? SpriteEffects.FlipHorizontally : SpriteEffects.None, ((int)growthStage == 0) ? 0.0001f : (baseSortPosition / 10000f));
 		}

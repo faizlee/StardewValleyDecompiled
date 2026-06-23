@@ -262,9 +262,9 @@ public class MeleeWeapon : Tool
 			int value = type.Value;
 			return Game1.content.LoadString("Strings\\StringsFromCSFiles:Tool.cs.14303", getItemLevel(), Game1.content.LoadString(value switch
 			{
-				1 => "Strings\\StringsFromCSFiles:Tool.cs.14304", 
-				2 => "Strings\\StringsFromCSFiles:Tool.cs.14305", 
-				_ => "Strings\\StringsFromCSFiles:Tool.cs.14306", 
+				1 => "Strings\\StringsFromCSFiles:Tool.cs.14304",
+				2 => "Strings\\StringsFromCSFiles:Tool.cs.14305",
+				_ => "Strings\\StringsFromCSFiles:Tool.cs.14306",
 			}));
 		}
 		return base.getCategoryName();
@@ -312,22 +312,22 @@ public class MeleeWeapon : Tool
 		{
 			switch (type)
 			{
-			case 0L:
-			case 3L:
+			case 0:
+			case 3:
 				if (defenseCooldown > 0)
 				{
 					coolDownLevel = (float)defenseCooldown / 1500f;
 				}
 				addedScale = addedSwordScale;
 				break;
-			case 2L:
+			case 2:
 				if (clubCooldown > 0)
 				{
 					coolDownLevel = (float)clubCooldown / 6000f;
 				}
 				addedScale = addedClubScale;
 				break;
-			case 1L:
+			case 1:
 				if (daggerCooldown > 0)
 				{
 					coolDownLevel = (float)daggerCooldown / 3000f;
@@ -1608,9 +1608,9 @@ public class MeleeWeapon : Tool
 		float baseSortLayer = f.getDrawLayer();
 		FarmerRenderer.FarmerSpriteLayers weaponSortLayer = f.FacingDirection switch
 		{
-			0 => FarmerRenderer.FarmerSpriteLayers.ToolUp, 
-			2 => FarmerRenderer.FarmerSpriteLayers.ToolDown, 
-			_ => FarmerRenderer.FarmerSpriteLayers.TOOL_IN_USE_SIDE, 
+			0 => FarmerRenderer.FarmerSpriteLayers.ToolUp,
+			2 => FarmerRenderer.FarmerSpriteLayers.ToolDown,
+			_ => FarmerRenderer.FarmerSpriteLayers.TOOL_IN_USE_SIDE,
 		};
 		float sortBehindLayer = FarmerRenderer.GetLayerDepth(baseSortLayer, FarmerRenderer.FarmerSpriteLayers.ToolUp);
 		float sortLayer = FarmerRenderer.GetLayerDepth(baseSortLayer, weaponSortLayer);

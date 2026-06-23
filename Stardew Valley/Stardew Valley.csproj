@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <AssemblyName>Stardew Valley</AssemblyName>
@@ -27,34 +27,37 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
-      <HintPath>..\MonoGame.Framework.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="xTile">
-      <HintPath>..\xTile.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)xTile.dll</HintPath>
     </Reference>
     <Reference Include="SkiaSharp">
-      <HintPath>..\SkiaSharp.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)SkiaSharp.dll</HintPath>
     </Reference>
     <Reference Include="Steamworks.NET">
-      <HintPath>..\Steamworks.NET.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)Steamworks.NET.dll</HintPath>
     </Reference>
     <Reference Include="GalaxyCSharp">
-      <HintPath>..\GalaxyCSharp.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)GalaxyCSharp.dll</HintPath>
     </Reference>
     <Reference Include="Lidgren.Network">
-      <HintPath>..\Lidgren.Network.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)Lidgren.Network.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.HashFunction.Interfaces">
-      <HintPath>..\System.Data.HashFunction.Interfaces.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)System.Data.HashFunction.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.HashFunction.Core">
+      <HintPath>$(StardewReferenceDir)System.Data.HashFunction.Core.dll</HintPath>
     </Reference>
     <Reference Include="BmFont">
-      <HintPath>..\BmFont.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)BmFont.dll</HintPath>
     </Reference>
     <Reference Include="TextCopy">
-      <HintPath>..\TextCopy.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)TextCopy.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.HashFunction.xxHash">
-      <HintPath>..\System.Data.HashFunction.xxHash.dll</HintPath>
+      <HintPath>$(StardewReferenceDir)System.Data.HashFunction.xxHash.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

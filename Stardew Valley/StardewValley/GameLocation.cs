@@ -947,6 +947,26 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 			ShowSkillMastery(0, new Vector2(116f, 82f));
 			ShowSkillMastery(1, new Vector2(148f, 82f));
 			ShowSkillMastery(3, new Vector2(179f, 98f));
+			void ShowSkillMastery(int skill, Vector2 spritePosition)
+			{
+				uint masteryValue = Game1.player.stats.Get(StatKeys.Mastery(skill));
+				if (levelsNotSpent > 0 && masteryValue == 0)
+				{
+					temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors_1_6", new Microsoft.Xna.Framework.Rectangle(16, 110, 7, 9), spritePosition * 4f, flipped: false, 0f, Color.White)
+					{
+						animationLength = 15,
+						interval = 50f,
+						totalNumberOfLoops = 999999,
+						scale = 4f,
+						id = 8765 + skill
+					});
+				}
+				else if (masteryValue > 0)
+				{
+					MasteryTrackerMenu.addSkillFlairPlaque(skill);
+				}
+				Game1.changeMusicTrack("Upper_Ambient");
+			}
 			if (MasteryTrackerMenu.hasCompletedAllMasteryPlaques())
 			{
 				MasteryTrackerMenu.addSpiritCandles(instant: true);
@@ -6264,11 +6284,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => IsRainingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Raining1" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotRaining1", 
-						1 => IsSnowingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Snowing" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotSnowing", 
-						2 => (Game1.player.getFriendshipHeartLevelForNPC("Robin") > 4) ? "Strings\\SpeechBubbles:ScienceHouse_Robin_CloseFriends" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotCloseFriends", 
-						3 => IsRainingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Raining2" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotRaining2", 
-						_ => "Strings\\SpeechBubbles:ScienceHouse_Robin_Greeting", 
+						0 => IsRainingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Raining1" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotRaining1",
+						1 => IsSnowingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Snowing" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotSnowing",
+						2 => (Game1.player.getFriendshipHeartLevelForNPC("Robin") > 4) ? "Strings\\SpeechBubbles:ScienceHouse_Robin_CloseFriends" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotCloseFriends",
+						3 => IsRainingHere() ? "Strings\\SpeechBubbles:ScienceHouse_Robin_Raining2" : "Strings\\SpeechBubbles:ScienceHouse_Robin_NotRaining2",
+						_ => "Strings\\SpeechBubbles:ScienceHouse_Robin_Greeting",
 					};
 					if (Game1.random.NextDouble() < 0.001)
 					{
@@ -6311,11 +6331,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting1", 
-						1 => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting2", 
-						2 => (Game1.player.getFriendshipHeartLevelForNPC("Marnie") > 4) ? "Strings\\SpeechBubbles:AnimalShop_Marnie_CloseFriends" : "Strings\\SpeechBubbles:AnimalShop_Marnie_NotCloseFriends", 
-						3 => IsRainingHere() ? "Strings\\SpeechBubbles:AnimalShop_Marnie_Raining" : "Strings\\SpeechBubbles:AnimalShop_Marnie_NotRaining", 
-						_ => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting3", 
+						0 => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting1",
+						1 => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting2",
+						2 => (Game1.player.getFriendshipHeartLevelForNPC("Marnie") > 4) ? "Strings\\SpeechBubbles:AnimalShop_Marnie_CloseFriends" : "Strings\\SpeechBubbles:AnimalShop_Marnie_NotCloseFriends",
+						3 => IsRainingHere() ? "Strings\\SpeechBubbles:AnimalShop_Marnie_Raining" : "Strings\\SpeechBubbles:AnimalShop_Marnie_NotRaining",
+						_ => "Strings\\SpeechBubbles:AnimalShop_Marnie_Greeting3",
 					};
 					if (Game1.random.NextDouble() < 0.001)
 					{
@@ -6398,11 +6418,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting_" + (Game1.player.IsMale ? "Male" : "Female"), 
-						1 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting1", 
-						2 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting2", 
-						3 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting3", 
-						_ => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting4", 
+						0 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting_" + (Game1.player.IsMale ? "Male" : "Female"),
+						1 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting1",
+						2 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting2",
+						3 => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting3",
+						_ => "Strings\\SpeechBubbles:AdventureGuild_Marlon_Greeting4",
 					};
 					p.showTextAboveHead(Game1.content.LoadString(toSay));
 				}
@@ -6424,11 +6444,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 			{
 				string toSay = Game1.random.Next(5) switch
 				{
-					0 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting1", 
-					1 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting2", 
-					2 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting3", 
-					3 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting4", 
-					_ => "Strings\\SpeechBubbles:Hospital_Maru_Greeting5", 
+					0 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting1",
+					1 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting2",
+					2 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting3",
+					3 => "Strings\\SpeechBubbles:Hospital_Maru_Greeting4",
+					_ => "Strings\\SpeechBubbles:Hospital_Maru_Greeting5",
 				};
 				if (Game1.player.spouse == "Maru")
 				{
@@ -6453,9 +6473,9 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 			{
 				string toSay = Game1.random.Next(3) switch
 				{
-					0 => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting1", 
-					1 => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting2", 
-					_ => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting3", 
+					0 => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting1",
+					1 => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting2",
+					_ => "Strings\\SpeechBubbles:LeahHouse_Leah_Greeting3",
 				};
 				l.faceTowardFarmerForPeriod(3000, 15, faceAway: false, Game1.player);
 				l.showTextAboveHead(Game1.content.LoadString(toSay, Game1.player.Name));
@@ -6469,9 +6489,9 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 			{
 				string toSay = Game1.random.Next(3) switch
 				{
-					0 => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting1", 
-					1 => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting2", 
-					_ => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting3", 
+					0 => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting1",
+					1 => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting2",
+					_ => "Strings\\SpeechBubbles:ElliottHouse_Elliott_Greeting3",
 				};
 				e.faceTowardFarmerForPeriod(3000, 15, faceAway: false, Game1.player);
 				e.showTextAboveHead(Game1.content.LoadString(toSay, Game1.player.Name));
@@ -6499,11 +6519,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting1", 
-						1 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting2", 
-						2 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting3", 
-						3 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting4", 
-						_ => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting5", 
+						0 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting1",
+						1 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting2",
+						2 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting3",
+						3 => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting4",
+						_ => "Strings\\SpeechBubbles:SandyHouse_Sandy_Greeting5",
 					};
 					p.showTextAboveHead(Game1.content.LoadString(toSay));
 				}
@@ -6533,11 +6553,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => "Greeting", 
-						1 => IsSummerHere() ? "Summer" : "NotSummer", 
-						2 => IsSnowingHere() ? "Snowing1" : "NotSnowing1", 
-						3 => IsRainingHere() ? "Raining" : "NotRaining", 
-						_ => IsSnowingHere() ? "Snowing2" : "NotSnowing2", 
+						0 => "Greeting",
+						1 => IsSummerHere() ? "Summer" : "NotSummer",
+						2 => IsSnowingHere() ? "Snowing1" : "NotSnowing1",
+						3 => IsRainingHere() ? "Raining" : "NotRaining",
+						_ => IsSnowingHere() ? "Snowing2" : "NotSnowing2",
 					};
 					if (Game1.random.NextDouble() < 0.001)
 					{
@@ -6592,11 +6612,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 			{
 				string toSay = Game1.random.Next(5) switch
 				{
-					0 => "Greeting1", 
-					1 => "Greeting2", 
-					2 => "Greeting3", 
-					3 => "Greeting4", 
-					_ => "Greeting5", 
+					0 => "Greeting1",
+					1 => "Greeting2",
+					2 => "Greeting3",
+					3 => "Greeting4",
+					_ => "Greeting5",
 				};
 				if (Game1.random.NextDouble() < 0.001)
 				{
@@ -6621,11 +6641,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 				{
 					string toSay = Game1.random.Next(5) switch
 					{
-						0 => IsWinterHere() ? "Winter" : "NotWinter", 
-						1 => IsSummerHere() ? "Summer" : "NotSummer", 
-						2 => "Greeting1", 
-						3 => "Greeting2", 
-						_ => IsRainingHere() ? "Raining" : "NotRaining", 
+						0 => IsWinterHere() ? "Winter" : "NotWinter",
+						1 => IsSummerHere() ? "Summer" : "NotSummer",
+						2 => "Greeting1",
+						3 => "Greeting2",
+						_ => IsRainingHere() ? "Raining" : "NotRaining",
 					};
 					if (Game1.random.NextDouble() < 0.001)
 					{
@@ -11166,10 +11186,10 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 	{
 		return season switch
 		{
-			Season.Spring => r.Choose("(O)784", "(O)674", "(O)675"), 
-			Season.Summer => r.Choose("(O)785", "(O)676", "(O)677"), 
-			Season.Fall => r.Choose("(O)786", "(O)678", "(O)679"), 
-			_ => "(O)674", 
+			Season.Spring => r.Choose("(O)784", "(O)674", "(O)675"),
+			Season.Summer => r.Choose("(O)785", "(O)676", "(O)677"),
+			Season.Fall => r.Choose("(O)786", "(O)678", "(O)679"),
+			_ => "(O)674",
 		};
 	}
 
@@ -14281,11 +14301,11 @@ public class GameLocation : INetObject<NetFields>, IEquatable<GameLocation>, IAn
 		{
 			int debris = type switch
 			{
-				"Coal" => 4, 
-				"Copper" => 0, 
-				"Gold" => 6, 
-				"Iridium" => 10, 
-				_ => 2, 
+				"Coal" => 4,
+				"Copper" => 0,
+				"Gold" => 6,
+				"Iridium" => 10,
+				_ => 2,
 			};
 			if (ArgUtility.TryGetInt(fields, 1, out var itemId, out error))
 			{

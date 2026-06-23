@@ -74,27 +74,26 @@ public static class ItemContextTagManager
 				if (!objectData.GeodeDropsDefaultItems)
 				{
 					List<ObjectGeodeDropData> geodeDrops = objectData.GeodeDrops;
-					if (geodeDrops == null || geodeDrops.Count <= 0)
+					if (geodeDrops != null && geodeDrops.Count > 0)
 					{
-						goto IL_0207;
+						tags.Add("geode");
 					}
 				}
-				tags.Add("geode");
-				goto IL_0207;
-			}
-			case "(H)":
+				else
 				{
-					if (itemData.RawData is string[] hatData)
-					{
-						string rawTags = ArgUtility.Get(hatData, 4);
-						tags.AddRange(ArgUtility.SplitBySpace(rawTags));
-					}
-					break;
+					tags.Add("geode");
 				}
-				IL_0207:
 				if (!objectData.CanBeGivenAsGift)
 				{
 					tags.Add("not_giftable");
+				}
+				break;
+			}
+			case "(H)":
+				if (itemData.RawData is string[] hatData)
+				{
+					string rawTags = ArgUtility.Get(hatData, 4);
+					tags.AddRange(ArgUtility.SplitBySpace(rawTags));
 				}
 				break;
 			}

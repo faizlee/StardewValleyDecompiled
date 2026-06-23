@@ -1335,13 +1335,13 @@ public class Object : Item
 				if (heldObject.Value.heldObject.Value != null)
 				{
 					Object value = heldObject.Value.heldObject.Value;
-					Chest chest = value as Chest;
-					if (chest != null)
+					Chest chest2 = value as Chest;
+					if (chest2 != null)
 					{
-						chest.GetMutex().RequestLock(delegate
+						chest2.GetMutex().RequestLock(delegate
 						{
-							List<Item> list = new List<Item>(chest.Items);
-							chest.Items.Clear();
+							List<Item> list = new List<Item>(chest2.Items);
+							chest2.Items.Clear();
 							foreach (Item current in list)
 							{
 								if (current != null)
@@ -1352,7 +1352,7 @@ public class Object : Item
 							Object value2 = heldObject.Value;
 							heldObject.Value = null;
 							location.debris.Add(new Debris(value2, tileLocation.Value * 64f + new Vector2(32f, 32f)));
-							chest.GetMutex().ReleaseLock();
+							chest2.GetMutex().ReleaseLock();
 						});
 					}
 					return false;
@@ -3032,9 +3032,9 @@ public class Object : Item
 			{
 				warp_location = Game1.whichFarm switch
 				{
-					6 => new Point(82, 29), 
-					5 => new Point(48, 39), 
-					_ => new Point(48, 7), 
+					6 => new Point(82, 29),
+					5 => new Point(48, 39),
+					_ => new Point(48, 7),
 				};
 			}
 			Game1.warpFarmer("Farm", warp_location.X, warp_location.Y, flip: false);
@@ -3570,9 +3570,9 @@ public class Object : Item
 		{
 			return placementRestriction switch
 			{
-				1 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Furniture_Outdoors"), 
-				2 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Furniture_Decoration"), 
-				_ => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12847"), 
+				1 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Furniture_Outdoors"),
+				2 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Furniture_Decoration"),
+				_ => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12847"),
 			};
 		}
 		if (Type == "Arch")
@@ -4244,9 +4244,9 @@ public class Object : Item
 		int.TryParse(preservedParentSheetIndex.Value, out var preservedParentSheetInt);
 		preservedParentSheetInt = preservedParentSheetInt switch
 		{
-			2300 => 2400, 
-			2400 => 0, 
-			_ => (preservedParentSheetInt + 100) % 2400, 
+			2300 => 2400,
+			2400 => 0,
+			_ => (preservedParentSheetInt + 100) % 2400,
 		};
 		preservedParentSheetIndex.Value = preservedParentSheetInt.ToString();
 		shakeTimer = 200;
@@ -4944,10 +4944,10 @@ public class Object : Item
 		}
 		return base.QualifiedItemId switch
 		{
-			"(O)102" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12994"), 
-			"(O)535" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12995"), 
-			"(BC)160" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12996"), 
-			_ => base.checkForSpecialItemHoldUpMeessage(), 
+			"(O)102" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12994"),
+			"(O)535" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12995"),
+			"(BC)160" => Game1.content.LoadString("Strings\\StringsFromCSFiles:Object.cs.12996"),
+			_ => base.checkForSpecialItemHoldUpMeessage(),
 		};
 	}
 
@@ -5600,7 +5600,7 @@ public class Object : Item
 		}
 		if (base.QualifiedItemId == "(O)419")
 		{
-			if (l.terrainFeatures.TryGetValue(tile, out terrainFeature) && terrainFeature is Tree tree && !tree.stopGrowingMoss.Value)
+			if (l.terrainFeatures.TryGetValue(tile, out terrainFeature) && terrainFeature is Tree tree2 && !tree2.stopGrowingMoss.Value)
 			{
 				return true;
 			}
@@ -5991,10 +5991,10 @@ public class Object : Item
 	{
 		return base.QualifiedItemId switch
 		{
-			"(O)599" => 0, 
-			"(O)621" => 1, 
-			"(O)645" => 2, 
-			_ => -1, 
+			"(O)599" => 0,
+			"(O)621" => 1,
+			"(O)645" => 2,
+			_ => -1,
 		};
 	}
 
@@ -6354,9 +6354,9 @@ public class Object : Item
 				new CrabPot().placementAction(location, x, y, who);
 				return true;
 			case "(O)805":
-				if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is Tree tree)
+				if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is Tree tree2)
 				{
-					return tree.fertilize();
+					return tree2.fertilize();
 				}
 				return false;
 			case "(O)419":
@@ -6376,17 +6376,17 @@ public class Object : Item
 		{
 			if (IsTapper())
 			{
-				if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is Tree tree && (int)tree.growthStage >= 5 && !tree.stump && !location.objects.ContainsKey(placementTile) && (!tree.isTemporaryGreenRainTree || Game1.season != Season.Summer))
+				if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is Tree tree3 && (int)tree3.growthStage >= 5 && !tree3.stump && !location.objects.ContainsKey(placementTile) && (!tree3.isTemporaryGreenRainTree || Game1.season != Season.Summer))
 				{
-					WildTreeData data = tree.GetData();
+					WildTreeData data = tree3.GetData();
 					if (data != null && data.CanBeTapped())
 					{
 						Object tapper = (Object)getOne();
 						tapper.heldObject.Value = null;
 						tapper.TileLocation = placementTile;
 						location.objects.Add(placementTile, tapper);
-						tree.tapped.Value = true;
-						tree.UpdateTapperProduct(tapper);
+						tree3.tapped.Value = true;
+						tree3.UpdateTapperProduct(tapper);
 						location.playSound("axe");
 						return true;
 					}
@@ -6687,12 +6687,12 @@ public class Object : Item
 		}
 		if (base.Category == -74 || base.Category == -19)
 		{
-			if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is HoeDirt dirt)
+			if (location.terrainFeatures.TryGetValue(placementTile, out terrainFeature) && terrainFeature is HoeDirt hoeDirt)
 			{
 				string seedId = Crop.ResolveSeedId(who.ActiveObject.ItemId, location);
-				if (dirt.canPlantThisSeedHere(seedId, who.ActiveObject.Category == -19))
+				if (hoeDirt.canPlantThisSeedHere(seedId, who.ActiveObject.Category == -19))
 				{
-					if (dirt.plant(seedId, who, who.ActiveObject.Category == -19) && who.IsLocalPlayer)
+					if (hoeDirt.plant(seedId, who, who.ActiveObject.Category == -19) && who.IsLocalPlayer)
 					{
 						if (base.Category == -74)
 						{
@@ -6707,22 +6707,22 @@ public class Object : Item
 									continue;
 								}
 								Object value = o.heldObject.Value.heldObject.Value;
-								Chest chest = value as Chest;
-								if (chest == null)
+								Chest chest3 = value as Chest;
+								if (chest3 == null)
 								{
 									continue;
 								}
-								IInventory items = chest.Items;
-								if (items.Count <= 0 || items[0] == null || chest.GetMutex().IsLocked())
+								IInventory items = chest3.Items;
+								if (items.Count <= 0 || items[0] == null || chest3.GetMutex().IsLocked())
 								{
 									continue;
 								}
-								chest.GetMutex().RequestLock(delegate
+								chest3.GetMutex().RequestLock(delegate
 								{
 									if (items.Count > 0 && items[0] != null)
 									{
 										Item item = items[0];
-										if (item.Category == -19 && ((HoeDirt)terrainFeature).plant(item.ItemId, who, isFertilizer: true))
+										if (item.Category == -19 && hoeDirt.plant(item.ItemId, who, isFertilizer: true))
 										{
 											item.Stack--;
 											if (item.Stack <= 0)
@@ -6731,7 +6731,7 @@ public class Object : Item
 											}
 										}
 									}
-									chest.GetMutex().ReleaseLock();
+									chest3.GetMutex().ReleaseLock();
 								});
 								break;
 							}

@@ -3049,17 +3049,17 @@ public class Farmer : Character, IComparable
 	{
 		return level switch
 		{
-			1 => 100, 
-			2 => 380, 
-			3 => 770, 
-			4 => 1300, 
-			5 => 2150, 
-			6 => 3300, 
-			7 => 4800, 
-			8 => 6900, 
-			9 => 10000, 
-			10 => 15000, 
-			_ => -1, 
+			1 => 100,
+			2 => 380,
+			3 => 770,
+			4 => 1300,
+			5 => 2150,
+			6 => 3300,
+			7 => 4800,
+			8 => 6900,
+			9 => 10000,
+			10 => 15000,
+			_ => -1,
 		};
 	}
 
@@ -5406,51 +5406,51 @@ public class Farmer : Character, IComparable
 			case Hat.HairDrawType.DrawObscuredHair:
 				switch ((long)hair.Value)
 				{
-				case 50L:
-				case 51L:
-				case 52L:
-				case 53L:
-				case 54L:
-				case 55L:
+				case 50:
+				case 51:
+				case 52:
+				case 53:
+				case 54:
+				case 55:
 					return hair;
-				case 48L:
+				case 48:
 					return 6;
-				case 49L:
+				case 49:
 					return 52;
-				case 3L:
+				case 3:
 					return 11;
-				case 1L:
-				case 5L:
-				case 6L:
-				case 9L:
-				case 11L:
-				case 17L:
-				case 20L:
-				case 23L:
-				case 24L:
-				case 25L:
-				case 27L:
-				case 28L:
-				case 29L:
-				case 30L:
-				case 32L:
-				case 33L:
-				case 34L:
-				case 36L:
-				case 39L:
-				case 41L:
-				case 43L:
-				case 44L:
-				case 45L:
-				case 46L:
-				case 47L:
+				case 1:
+				case 5:
+				case 6:
+				case 9:
+				case 11:
+				case 17:
+				case 20:
+				case 23:
+				case 24:
+				case 25:
+				case 27:
+				case 28:
+				case 29:
+				case 30:
+				case 32:
+				case 33:
+				case 34:
+				case 36:
+				case 39:
+				case 41:
+				case 43:
+				case 44:
+				case 45:
+				case 46:
+				case 47:
 					return hair;
-				case 18L:
-				case 19L:
-				case 21L:
-				case 31L:
+				case 18:
+				case 19:
+				case 21:
+				case 31:
 					return 23;
-				case 42L:
+				case 42:
 					return 46;
 				default:
 					if ((int)hair >= 16)
@@ -5544,11 +5544,11 @@ public class Farmer : Character, IComparable
 		Microsoft.Xna.Framework.Rectangle bounds = GetBoundingBox();
 		return FacingDirection switch
 		{
-			0 => new Vector2(bounds.Center.X, bounds.Y - distance), 
-			1 => new Vector2(bounds.Right + distance, bounds.Center.Y), 
-			2 => new Vector2(bounds.Center.X, bounds.Bottom + distance), 
-			3 => new Vector2(bounds.X - distance, bounds.Center.Y), 
-			_ => Vector2.Zero, 
+			0 => new Vector2(bounds.Center.X, bounds.Y - distance),
+			1 => new Vector2(bounds.Right + distance, bounds.Center.Y),
+			2 => new Vector2(bounds.Center.X, bounds.Bottom + distance),
+			3 => new Vector2(bounds.X - distance, bounds.Center.Y),
+			_ => Vector2.Zero,
 		};
 	}
 
@@ -6873,7 +6873,7 @@ public class Farmer : Character, IComparable
 		int frameOffset = ((FacingDirection == 0) ? 4 : ((FacingDirection == 2) ? 2 : 0));
 		switch ((long)toolPower.Value)
 		{
-		case 1L:
+		case 1:
 			powerUpColor = Color.Orange;
 			if (!(CurrentTool is WateringCan))
 			{
@@ -6881,7 +6881,7 @@ public class Farmer : Character, IComparable
 			}
 			jitterStrength = 0.25f;
 			break;
-		case 2L:
+		case 2:
 			powerUpColor = Color.LightSteelBlue;
 			if (!(CurrentTool is WateringCan))
 			{
@@ -6889,15 +6889,15 @@ public class Farmer : Character, IComparable
 			}
 			jitterStrength = 0.5f;
 			break;
-		case 3L:
+		case 3:
 			powerUpColor = Color.Gold;
 			jitterStrength = 1f;
 			break;
-		case 4L:
+		case 4:
 			powerUpColor = Color.Violet;
 			jitterStrength = 2f;
 			break;
-		case 5L:
+		case 5:
 			powerUpColor = Color.BlueViolet;
 			jitterStrength = 3f;
 			break;
@@ -7051,13 +7051,13 @@ public class Farmer : Character, IComparable
 	{
 		return index switch
 		{
-			0 => FarmingLevel, 
-			3 => MiningLevel, 
-			1 => FishingLevel, 
-			2 => ForagingLevel, 
-			5 => LuckLevel, 
-			4 => CombatLevel, 
-			_ => 0, 
+			0 => FarmingLevel,
+			3 => MiningLevel,
+			1 => FishingLevel,
+			2 => ForagingLevel,
+			5 => LuckLevel,
+			4 => CombatLevel,
+			_ => 0,
 		};
 	}
 
@@ -7065,13 +7065,13 @@ public class Farmer : Character, IComparable
 	{
 		return index switch
 		{
-			0 => farmingLevel.Value, 
-			3 => miningLevel.Value, 
-			1 => fishingLevel.Value, 
-			2 => foragingLevel.Value, 
-			5 => luckLevel.Value, 
-			4 => combatLevel.Value, 
-			_ => 0, 
+			0 => farmingLevel.Value,
+			3 => miningLevel.Value,
+			1 => fishingLevel.Value,
+			2 => foragingLevel.Value,
+			5 => luckLevel.Value,
+			4 => combatLevel.Value,
+			_ => 0,
 		};
 	}
 
@@ -7079,13 +7079,13 @@ public class Farmer : Character, IComparable
 	{
 		return index switch
 		{
-			0 => "Farming", 
-			3 => "Mining", 
-			1 => "Fishing", 
-			2 => "Foraging", 
-			5 => "Luck", 
-			4 => "Combat", 
-			_ => "", 
+			0 => "Farming",
+			3 => "Mining",
+			1 => "Fishing",
+			2 => "Foraging",
+			5 => "Luck",
+			4 => "Combat",
+			_ => "",
 		};
 	}
 
@@ -7093,13 +7093,13 @@ public class Farmer : Character, IComparable
 	{
 		return name.ToLower() switch
 		{
-			"farming" => 0, 
-			"mining" => 3, 
-			"fishing" => 1, 
-			"foraging" => 2, 
-			"luck" => 5, 
-			"combat" => 4, 
-			_ => -1, 
+			"farming" => 0,
+			"mining" => 3,
+			"fishing" => 1,
+			"foraging" => 2,
+			"luck" => 5,
+			"combat" => 4,
+			_ => -1,
 		};
 	}
 
@@ -7161,13 +7161,13 @@ public class Farmer : Character, IComparable
 	{
 		return index switch
 		{
-			0 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1991"), 
-			3 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1992"), 
-			1 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1993"), 
-			2 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1994"), 
-			5 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1995"), 
-			4 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1996"), 
-			_ => "", 
+			0 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1991"),
+			3 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1992"),
+			1 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1993"),
+			2 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1994"),
+			5 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1995"),
+			4 => Game1.content.LoadString("Strings\\StringsFromCSFiles:Farmer.cs.1996"),
+			_ => "",
 		};
 	}
 

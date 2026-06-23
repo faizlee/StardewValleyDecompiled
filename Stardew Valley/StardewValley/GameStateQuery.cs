@@ -492,10 +492,10 @@ public class GameStateQuery
 			string caveType;
 			switch (Game1.MasterPlayer.caveChoice)
 			{
-			case 1L:
+			case 1:
 				caveType = "Bats";
 				break;
-			case 2L:
+			case 2:
 				caveType = "Mushrooms";
 				break;
 			default:
@@ -806,25 +806,25 @@ public class GameStateQuery
 			object actualValue = property.GetValue(Game1.netWorldState.Value, null);
 			if (actualValue != null)
 			{
-				if (!(actualValue is bool actual))
+				if (!(actualValue is bool actualBool))
 				{
-					if (!(actualValue is int actual))
+					if (!(actualValue is int actualInt))
 					{
-						if (actualValue is string actual)
+						if (actualValue is string actualString)
 						{
-							return string.Equals(actual, expectedValue, StringComparison.OrdinalIgnoreCase);
+							return string.Equals(actualString, expectedValue, StringComparison.OrdinalIgnoreCase);
 						}
 						return string.Equals(actualValue.ToString(), expectedValue, StringComparison.OrdinalIgnoreCase);
 					}
-					if (int.TryParse(expectedValue, out var minValue) && actual >= minValue)
+					if (int.TryParse(expectedValue, out var minValue) && actualInt >= minValue)
 					{
-						return actual <= maxValue;
+						return actualInt <= maxValue;
 					}
 					return false;
 				}
 				if (bool.TryParse(expectedValue, out var expectedBool))
 				{
-					return actual == expectedBool;
+					return actualBool == expectedBool;
 				}
 				return false;
 			}
@@ -1108,10 +1108,10 @@ public class GameStateQuery
 			case "any":
 				return Helpers.WithPlayer(context.Player, playerKey, (Farmer target) => type switch
 				{
-					"mailbox" => target.mailbox.Contains(mailId), 
-					"tomorrow" => target.mailForTomorrow.Contains(mailId), 
-					"received" => target.mailReceived.Contains(mailId), 
-					_ => target.hasOrWillReceiveMail(mailId), 
+					"mailbox" => target.mailbox.Contains(mailId),
+					"tomorrow" => target.mailForTomorrow.Contains(mailId),
+					"received" => target.mailReceived.Contains(mailId),
+					_ => target.hasOrWillReceiveMail(mailId),
 				});
 			}
 		}

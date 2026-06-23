@@ -407,3 +407,6 @@ _local_exports/
 # This is the raw input source for reference analysis and must not be committed.
 Content/
 Content (unpacked)/
+
+# Local machine path to the user's installed Stardew Valley runtime DLLs.
+Directory.Build.local.props

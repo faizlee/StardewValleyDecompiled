@@ -279,13 +279,13 @@ public class Bush : LargeTerrainFeature
 		Vector2 tileLocation = Tile;
 		switch ((long)size.Value)
 		{
-		case 0L:
-		case 3L:
+		case 0:
+		case 3:
 			return new Rectangle((int)tileLocation.X * 64, (int)tileLocation.Y * 64, 64, 64);
-		case 1L:
-		case 4L:
+		case 1:
+		case 4:
 			return new Rectangle((int)tileLocation.X * 64, (int)tileLocation.Y * 64, 128, 64);
-		case 2L:
+		case 2:
 			return new Rectangle((int)tileLocation.X * 64, (int)tileLocation.Y * 64, 192, 64);
 		default:
 			return Rectangle.Empty;
@@ -297,13 +297,13 @@ public class Bush : LargeTerrainFeature
 		Vector2 tileLocation = Tile;
 		switch ((long)size.Value)
 		{
-		case 0L:
-		case 3L:
+		case 0:
+		case 3:
 			return new Rectangle((int)tileLocation.X * 64, (int)(tileLocation.Y - 1f) * 64, 64, 160);
-		case 1L:
-		case 4L:
+		case 1:
+		case 4:
 			return new Rectangle((int)tileLocation.X * 64, (int)(tileLocation.Y - 2f) * 64, 128, 256);
-		case 2L:
+		case 2:
 			return new Rectangle((int)tileLocation.X * 64, (int)(tileLocation.Y - 2f) * 64, 192, 256);
 		default:
 			return Rectangle.Empty;
@@ -391,14 +391,14 @@ public class Bush : LargeTerrainFeature
 			setUpSourceRect();
 			switch ((long)size)
 			{
-			case 4L:
+			case 4:
 				uniqueSpawnMutex.RequestLock(delegate
 				{
 					Game1.player.team.MarkCollectedNut("Bush_" + Location.Name + "_" + tileLocation.X + "_" + tileLocation.Y);
 					Game1.createItemDebris(ItemRegistry.Create(shakeOff), new Vector2(getBoundingBox().Center.X, getBoundingBox().Bottom - 2), 0, Location, getBoundingBox().Bottom);
 				});
 				break;
-			case 3L:
+			case 3:
 				Game1.createObjectDebris(shakeOff, (int)tileLocation.X, (int)tileLocation.Y);
 				break;
 			default:
@@ -444,14 +444,14 @@ public class Bush : LargeTerrainFeature
 	{
 		return size.Value switch
 		{
-			3 => "(O)815", 
-			4 => "(O)73", 
+			3 => "(O)815",
+			4 => "(O)73",
 			_ => Location.GetSeason() switch
 			{
-				Season.Spring => "(O)296", 
-				Season.Fall => "(O)410", 
-				_ => null, 
-			}, 
+				Season.Spring => "(O)296",
+				Season.Fall => "(O)410",
+				_ => null,
+			},
 		};
 	}
 
@@ -662,9 +662,9 @@ public class Bush : LargeTerrainFeature
 	{
 		return size.Value switch
 		{
-			3 => 0, 
-			4 => 1, 
-			_ => size.Value, 
+			3 => 0,
+			4 => 1,
+			_ => size.Value,
 		};
 	}
 

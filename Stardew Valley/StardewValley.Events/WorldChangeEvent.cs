@@ -119,28 +119,28 @@ public class WorldChangeEvent : BaseFarmEvent
 		wasRaining = Game1.isRaining;
 		switch (whichEvent)
 		{
-		case 15L:
+		case 15:
 			location = Game1.RequireLocation("IslandNorth");
 			targetTile = new Point(40, 23);
 			break;
-		case 13L:
+		case 13:
 			location = Game1.RequireLocation("BoatTunnel");
 			targetTile = new Point(7, 7);
 			break;
-		case 12L:
+		case 12:
 			location = Game1.RequireLocation("Town");
 			targetTile = new Point(95, 48);
 			break;
-		case 10L:
+		case 10:
 			location = Game1.RequireLocation("Town");
 			targetTile = new Point(52, 18);
 			break;
-		case 11L:
+		case 11:
 			location = Game1.RequireLocation("Town");
 			targetTile = new Point(95, 48);
 			break;
-		case 0L:
-		case 1L:
+		case 0:
+		case 1:
 			location = Game1.getFarm();
 			targetTile = ((Game1.whichFarm == 5) ? new Point(39, 32) : new Point(28, 13));
 			foreach (Building b in location.buildings)
@@ -152,27 +152,27 @@ public class WorldChangeEvent : BaseFarmEvent
 				}
 			}
 			break;
-		case 6L:
-		case 7L:
+		case 6:
+		case 7:
 			location = Game1.RequireLocation("BusStop");
 			targetTile = new Point(24, 8);
 			break;
-		case 2L:
-		case 3L:
+		case 2:
+		case 3:
 			location = Game1.RequireLocation("Town");
 			targetTile = new Point(105, 79);
 			break;
-		case 4L:
-		case 5L:
+		case 4:
+		case 5:
 			location = Game1.RequireLocation("Mountain");
 			targetTile = new Point(95, 27);
 			break;
-		case 8L:
-		case 9L:
+		case 8:
+		case 9:
 			location = Game1.RequireLocation("Mountain");
 			targetTile = new Point(48, 5);
 			break;
-		case 14L:
+		case 14:
 			location = Game1.RequireLocation("Mountain");
 			targetTile = new Point(16, 7);
 			break;
@@ -191,7 +191,7 @@ public class WorldChangeEvent : BaseFarmEvent
 		Game1.changeMusicTrack("nightTime");
 		switch (whichEvent)
 		{
-		case 15L:
+		case 15:
 		{
 			Game1.changeMusicTrack("jungle_ambience");
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors_1_6", new Rectangle(200, 89, 28, 32), new Vector2(39f, 32f) * 64f, flipped: false, 0f, Color.White)
@@ -253,7 +253,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			DelayedAction.functionAfterDelay(ParrotFlyAway, 11000);
 			break;
 		}
-		case 13L:
+		case 13:
 			if (Game1.IsMasterGame)
 			{
 				Game1.addMailForTomorrow("willyBoatFixed", noLetter: true);
@@ -273,7 +273,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			soundInterval = 560;
 			sound = "crafting";
 			break;
-		case 12L:
+		case 12:
 		{
 			cutsceneLengthTimer += 3000;
 			Game1.isRaining = true;
@@ -302,7 +302,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			DelayedAction.functionAfterDelay(obliterateJojaMartDoor, 6050);
 			break;
 		}
-		case 10L:
+		case 10:
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(288, 1349, 19, 28), 150f, 5, 999, new Vector2(3760f, 1056f), flicker: false, flipped: false)
 			{
 				scale = 4f,
@@ -323,7 +323,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, LightSource.LightContext.None, 0L));
 			sound = "axchop";
 			break;
-		case 11L:
+		case 11:
 			Utility.addSprinklesToLocation(location, targetTile.X, targetTile.Y, 7, 7, 15000, 150, Color.LightCyan);
 			Utility.addStarsAndSpirals(location, targetTile.X, targetTile.Y, 7, 7, 15000, 150, Color.White);
 			Game1.player.activeDialogueEvents.TryAdd("movieTheater", 3);
@@ -342,7 +342,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			});
 			soundInterval = 800;
 			break;
-		case 0L:
+		case 0:
 		{
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(288, 1349, 19, 28), 150f, 5, 999, new Vector2((targetTile.X - 3) * 64 + 8, (targetTile.Y - 1) * 64 - 32), flicker: false, flipped: false)
 			{
@@ -405,7 +405,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			location.temporarySprites.Add(raccoon);
 			break;
 		}
-		case 1L:
+		case 1:
 		{
 			Utility.addSprinklesToLocation(location, targetTile.X, targetTile.Y - 1, 7, 7, 15000, 150, Color.LightCyan);
 			Utility.addStarsAndSpirals(location, targetTile.X, targetTile.Y - 1, 7, 7, 15000, 150, Color.White);
@@ -470,7 +470,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			location.temporarySprites.Add(raccoon2);
 			break;
 		}
-		case 6L:
+		case 6:
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(288, 1349, 19, 28), 150f, 5, 999, new Vector2(1856f, 480f), flicker: false, flipped: false)
 			{
 				scale = 4f,
@@ -491,7 +491,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, LightSource.LightContext.None, 0L));
 			sound = "clank";
 			break;
-		case 7L:
+		case 7:
 			Utility.addSprinklesToLocation(location, targetTile.X, targetTile.Y, 9, 4, 10000, 200, Color.LightCyan, null, motionTowardCenter: true);
 			Utility.addStarsAndSpirals(location, targetTile.X, targetTile.Y, 9, 4, 15000, 150, Color.White);
 			sound = "junimoMeep1";
@@ -546,7 +546,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, Color.DarkGoldenrod, LightSource.LightContext.None, 0L));
 			soundInterval = 500;
 			break;
-		case 2L:
+		case 2:
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(288, 1377, 19, 28), 100f, 5, 999, new Vector2(6656f, 5024f), flicker: false, flipped: false)
 			{
 				scale = 4f,
@@ -572,7 +572,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, LightSource.LightContext.None, 0L));
 			sound = "clank";
 			break;
-		case 3L:
+		case 3:
 			Utility.addSprinklesToLocation(location, targetTile.X + 1, targetTile.Y, 6, 4, 15000, 350, Color.LightCyan);
 			Utility.addStarsAndSpirals(location, targetTile.X + 1, targetTile.Y, 6, 4, 15000, 350, Color.White);
 			Game1.player.activeDialogueEvents.TryAdd("cc_Minecart", 7);
@@ -603,7 +603,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, Color.DarkGoldenrod, LightSource.LightContext.None, 0L));
 			soundInterval = 800;
 			break;
-		case 4L:
+		case 4:
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(383, 1378, 28, 27), 400f, 2, 999, new Vector2(5504f, 1632f), flicker: false, flipped: false)
 			{
 				scale = 4f,
@@ -635,7 +635,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, LightSource.LightContext.None, 0L));
 			sound = "axchop";
 			break;
-		case 5L:
+		case 5:
 			Utility.addSprinklesToLocation(location, targetTile.X, targetTile.Y, 7, 4, 15000, 150, Color.LightCyan);
 			Utility.addStarsAndSpirals(location, targetTile.X + 1, targetTile.Y, 7, 4, 15000, 350, Color.White);
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(294, 1432, 16, 16), 300f, 4, 999, new Vector2(5824f, 1648f), flicker: false, flipped: false)
@@ -666,7 +666,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, Color.DarkGoldenrod, LightSource.LightContext.None, 0L));
 			soundInterval = 800;
 			break;
-		case 8L:
+		case 8:
 			location.temporarySprites.Add(new TemporaryAnimatedSprite("LooseSprites\\Cursors", new Rectangle(288, 1377, 19, 28), 100f, 5, 999, new Vector2(2880f, 288f), flicker: false, flipped: false)
 			{
 				scale = 4f,
@@ -695,7 +695,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, LightSource.LightContext.None, 0L));
 			sound = "thudStep";
 			break;
-		case 9L:
+		case 9:
 			Game1.player.activeDialogueEvents.TryAdd("cc_Boulder", 7);
 			Utility.addSprinklesToLocation(location, targetTile.X, targetTile.Y, 4, 4, 15000, 350, Color.LightCyan);
 			Utility.addStarsAndSpirals(location, targetTile.X + 1, targetTile.Y, 4, 4, 15000, 550, Color.White);
@@ -728,7 +728,7 @@ public class WorldChangeEvent : BaseFarmEvent
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, Color.DarkGoldenrod, LightSource.LightContext.None, 0L));
 			soundInterval = 1000;
 			break;
-		case 14L:
+		case 14:
 		{
 			cutsceneLengthTimer = 12000;
 			Game1.currentLightSources.Add(new LightSource(4, new Vector2(targetTile.X, targetTile.Y) * 64f, 4f, Color.DarkGoldenrod, LightSource.LightContext.None, 0L));

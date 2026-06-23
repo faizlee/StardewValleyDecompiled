@@ -1,0 +1,8 @@
+<Project>
+  <Import Project="Directory.Build.local.props" Condition="Exists('Directory.Build.local.props')" />
+
+  <PropertyGroup>
+    <StardewReferenceDir Condition="'$(StardewInstallDir)' != ''">$([MSBuild]::EnsureTrailingSlash('$(StardewInstallDir)'))</StardewReferenceDir>
+    <StardewReferenceDir Condition="'$(StardewReferenceDir)' == ''">..\</StardewReferenceDir>
+  </PropertyGroup>
+</Project>
