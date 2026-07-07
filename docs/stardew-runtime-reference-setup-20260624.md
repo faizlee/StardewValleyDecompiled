@@ -11,10 +11,10 @@ Record what FarmOld is missing besides raw resources, and keep the setup safe: F
 ## Confirmed Inputs
 
 - Stardew install root: `E:\soft\funSoft\steam\steamapps\common\Stardew Valley`
-- FarmOld root: `E:\work\project\FarmOld`
-- FarmOld main project: `E:\work\project\FarmOld\Stardew Valley\Stardew Valley.csproj`
-- FarmOld GameData project: `E:\work\project\FarmOld\StardewValley.GameData\StardewValley.GameData.csproj`
-- Local build analysis output: `E:\work\project\FarmOld\_local_exports\stardew_build_check_20260624`
+- FarmOld root: `E:\work\project\source-archives\farm-source-archive`
+- FarmOld main project: `E:\work\project\source-archives\farm-source-archive\Stardew Valley\Stardew Valley.csproj`
+- FarmOld GameData project: `E:\work\project\source-archives\farm-source-archive\StardewValley.GameData\StardewValley.GameData.csproj`
+- Local build analysis output: `E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_build_check_20260624`
 
 ## Non-Resource Gaps
 
@@ -103,7 +103,7 @@ It remains an internal reconstruction step. The source patch keeps the function 
 Build command:
 
 ```powershell
-dotnet build "E:\work\project\FarmOld\Stardew Valley\Stardew Valley.csproj" /t:Rebuild -v:minimal
+dotnet build "E:\work\project\source-archives\farm-source-archive\Stardew Valley\Stardew Valley.csproj" /t:Rebuild -v:minimal
 ```
 
 Result on 2026-06-24:

@@ -14,9 +14,9 @@ Runtime DLL references and decompiled-source build repairs are tracked separatel
 
 - Stardew install root: `E:\soft\funSoft\steam\steamapps\common\Stardew Valley`
 - Stardew raw content root: `E:\soft\funSoft\steam\steamapps\common\Stardew Valley\Content`
-- FarmOld root: `E:\work\project\FarmOld`
-- FarmOld current extracted visual resources: `E:\work\project\FarmOld\res`
-- FarmOld local analysis outputs: `E:\work\project\FarmOld\_local_exports`
+- FarmOld root: `E:\work\project\source-archives\farm-source-archive`
+- FarmOld current extracted visual resources: `E:\work\project\source-archives\farm-source-archive\res`
+- FarmOld local analysis outputs: `E:\work\project\source-archives\farm-source-archive\_local_exports`
 
 ## Directory Contract
 
@@ -74,13 +74,13 @@ _local_exports/stardew_visual_resource_inventory_20260624/
 ## Validation Commands
 
 ```powershell
-git -C E:\work\project\FarmOld check-ignore -v Content
-Test-Path E:\work\project\FarmOld\Content\Maps\Farm.xnb
-Test-Path E:\work\project\FarmOld\Content\Data\Crops.xnb
-Test-Path E:\work\project\FarmOld\Content\Strings
-Test-Path E:\work\project\FarmOld\_local_exports\stardew_visual_resource_inventory_20260624\summary.json
-Test-Path E:\work\project\FarmOld\_local_exports\stardew_content_hashes_inventory_20260624\summary.json
-git -C E:\work\project\FarmOld status --short --branch
+git -C E:\work\project\source-archives\farm-source-archive check-ignore -v Content
+Test-Path E:\work\project\source-archives\farm-source-archive\Content\Maps\Farm.xnb
+Test-Path E:\work\project\source-archives\farm-source-archive\Content\Data\Crops.xnb
+Test-Path E:\work\project\source-archives\farm-source-archive\Content\Strings
+Test-Path E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_visual_resource_inventory_20260624\summary.json
+Test-Path E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_content_hashes_inventory_20260624\summary.json
+git -C E:\work\project\source-archives\farm-source-archive status --short --branch
 ```
 
 ## Follow-Up
@@ -104,7 +104,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_data_exports_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_data_exports_20260624
 ```
 
 Result:
@@ -136,7 +136,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_strings_exports_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_strings_exports_20260624
 ```
 
 Result:
@@ -167,7 +167,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_xact_audio_inventory_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_xact_audio_inventory_20260624
 ```
 
 Result:
@@ -201,7 +201,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_fonts_inventory_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_fonts_inventory_20260624
 ```
 
 Result:
@@ -235,7 +235,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_content_hashes_inventory_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_content_hashes_inventory_20260624
 ```
 
 Result:
@@ -285,7 +285,7 @@ Status: completed as inventory on 2026-06-24; generic JSON export attempted and 
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_volcanolayouts_exports_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_volcanolayouts_exports_20260624
 ```
 
 Result:
@@ -319,7 +319,7 @@ Status: completed on 2026-06-24.
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_visual_resource_inventory_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_visual_resource_inventory_20260624
 ```
 
 Result:

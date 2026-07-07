@@ -28,7 +28,7 @@ python tools/stardew_resource/run_completion_pipeline.py
 Output:
 
 ```text
-E:\work\project\FarmOld\_local_exports\stardew_resource_completion_20260624
+E:\work\project\source-archives\farm-source-archive\_local_exports\stardew_resource_completion_20260624
 ```
 
 Tracked implementation tools:
@@ -155,7 +155,7 @@ If a future decision explicitly allows tracking decoded official assets, that de
 
 ## Current Evidence Snapshot
 
-The following numbers are from local outputs under `E:\work\project\FarmOld\_local_exports`.
+The following numbers are from local outputs under `E:\work\project\source-archives\farm-source-archive\_local_exports`.
 
 ### Integrity And Existing Outputs
 
@@ -871,8 +871,8 @@ python _local_exports/stardew_resource_completion_20260624/_tool/validate_comple
 Tracked doc validation:
 
 ```powershell
-git -C E:\work\project\FarmOld diff --check -- docs/stardew-complete-resource-supplement-implementation-plan-20260624.md
-git -C E:\work\project\FarmOld status --short
+git -C E:\work\project\source-archives\farm-source-archive diff --check -- docs/stardew-complete-resource-supplement-implementation-plan-20260624.md
+git -C E:\work\project\source-archives\farm-source-archive status --short
 ```
 
 ## Final Checklist
