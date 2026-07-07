@@ -1,0 +1,21 @@
+{
+  "schemaVersion": "1",
+  "archiveId": "farm-source-archive",
+  "canonicalRoot": "E:/work/project/source-archives/farm-source-archive",
+  "managedFor": "FarmGodot",
+  "repositories": [
+    {
+      "id": "farmold-stardew-decompiled",
+      "root": ".",
+      "status": "active",
+      "readOnlyPolicy": "source-files-read-only; archive metadata may be edited",
+      "primaryEntrypoints": [
+        "Stardew Valley Decompiled.sln",
+        "Stardew Valley/",
+        "StardewValley.GameData/",
+        "res/",
+        "_local_exports/stardew_maps_20260623/"
+      ]
+    }
+  ]
+}
